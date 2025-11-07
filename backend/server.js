@@ -6,19 +6,13 @@ const cartRoutes = require('./routes/cartRoutes');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // To parse JSON bodies
+app.use(cors());
+app.use(express.json());
 
-// Initialize an in-memory cart on the app instance.
 app.set('cart', []);
-// API Routes
 app.use('/api/products', productRoutes);
-app.use('/api', cartRoutes); // Use cart routes for /cart and /checkout
+app.use('/api', cartRoutes);
 
-// ... (rest of your server.js file)
-
-// Simple root endpoint
 app.get('/', (req, res) => {
   res.send('Welcome to the Vibe Commerce Mock API!');
 });
